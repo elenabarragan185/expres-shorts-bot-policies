@@ -80,6 +80,41 @@ h1{
   max-width:52ch;
 }
 
+.connect-card{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:18px 20px;
+  margin-bottom:32px;
+}
+.connect-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:4px;
+}
+.connect-copy{margin:0;color:var(--text-muted);font-size:0.92rem;max-width:38ch;}
+.connect-btn{
+  flex-shrink:0;
+  display:inline-block;
+  background:var(--accent);
+  color:var(--bg);
+  font-weight:600;
+  font-size:0.92rem;
+  text-decoration:none;
+  padding:11px 20px;
+  border-radius:8px;
+  white-space:nowrap;
+}
+.connect-btn:hover{opacity:0.9;}
+
 nav.toc{
   display:flex;
   gap:8px;
@@ -196,6 +231,14 @@ strong{font-weight:600;}
   </div>
   <h1>Expres Shorts Bot</h1>
   <p class="subtitle">Herramienta interna de un único desarrollador para republicar, en una cuenta propia de TikTok, contenido que ese mismo desarrollador ya produce y publica en sus tres canales de YouTube.</p>
+
+  <div class="connect-card">
+    <div>
+      <div class="connect-label">Cuenta de TikTok</div>
+      <p class="connect-copy">Autoriza el acceso para publicar los shorts diarios directamente en tu cuenta.</p>
+    </div>
+    <a class="connect-btn" href="https://www.tiktok.com/v2/auth/authorize/?client_key=sbawv2iuyywzgvej2u&scope=video.publish%2Cvideo.upload%2Cuser.info.basic&response_type=code&redirect_uri=https%3A%2F%2Felenabarragan185.github.io%2Fexpres-shorts-bot-policies%2Fcallback.html&state=_Uhyr7sz9Ul-EzGLesJOug&code_challenge=ygpUjd61DPf29ytNY3IRsOibjd-Xs5RksW45p59ZiTY&code_challenge_method=S256">Conectar con TikTok</a>
+  </div>
 
   <nav class="toc">
     <a href="#terminos">Términos de servicio</a>
