@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expres Shorts Bot — Autorización</title>
+<style>
+:root{
+  --bg:#F6F5F1;
+  --surface:#FFFFFF;
+  --text:#1B1D1B;
+  --text-muted:#5C625C;
+  --accent:#0F6A5C;
+  --accent-soft:#E4F0ED;
+  --border:#E2E0D8;
+  --mono-chip:#EFEEE7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181A; --surface:#1C2023; --text:#ECEEEA; --text-muted:#9BA39C;
+    --accent:#3FCBAF; --accent-soft:#193430; --border:#2B302C; --mono-chip:#20242166;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181A; --surface:#1C2023; --text:#ECEEEA; --text-muted:#9BA39C;
+  --accent:#3FCBAF; --accent-soft:#193430; --border:#2B302C; --mono-chip:#20242166;
+}
+*{box-sizing:border-box;}
+html{background:var(--bg);}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  margin:0;
+  padding-inline:20px;
+  padding-block:64px;
+  line-height:1.6;
+}
+.page{max-width:520px;margin-inline:auto;}
+h1{font-family:'Fraunces',Georgia,serif;font-size:1.7rem;margin:0 0 8px;}
+p{color:var(--text-muted);margin:0 0 24px;max-width:52ch;}
+.box{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:18px;
+  margin-bottom:16px;
+}
+.label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:8px;
+}
+textarea{
+  width:100%;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.85rem;
+  border:1px solid var(--border);
+  border-radius:8px;
+  padding:10px;
+  background:var(--mono-chip);
+  color:var(--text);
+  resize:vertical;
+  min-height:64px;
+}
+button{
+  margin-top:10px;
+  font-family:'IBM Plex Sans',sans-serif;
+  font-weight:600;
+  font-size:0.9rem;
+  border:none;
+  border-radius:8px;
+  padding:10px 16px;
+  background:var(--accent);
+  color:var(--bg);
+  cursor:pointer;
+}
+button:active{opacity:0.85;}
+.missing{
+  background:var(--accent-soft);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 18px;
+  color:var(--text);
+}
+.copied{color:var(--accent);font-size:0.85rem;margin-top:6px;display:none;}
+</style>
+</head>
+<body>
+<div class="page">
+  <h1>Autorización recibida</h1>
+  <p>Vuelve a la terminal donde ejecutaste <code>tiktok_auth.py</code> y pega ahí la URL de esta página completa (o solo el código de abajo) cuando te lo pida.</p>
+
+  <div class="box">
+    <div class="label">URL completa</div>
+    <textarea id="fullUrl" readonly rows="3"></textarea>
+    <button onclick="copyField('fullUrl')">Copiar URL</button>
+    <div class="copied" id="copiedFull">Copiado ✓</div>
+  </div>
+
+  <div class="box" id="codeBox" hidden>
+    <div class="label">Código</div>
+    <textarea id="codeOnly" readonly rows="2"></textarea>
+    <button onclick="copyField('codeOnly')">Copiar código</button>
+    <div class="copied" id="copiedCode">Copiado ✓</div>
+  </div>
+
+  <div class="missing" id="missing" hidden>
+    No se encontró un parámetro <code>code</code> en esta URL. Si TikTok mostró un error de autorización, vuelve a intentarlo desde <code>tiktok_auth.py</code>.
+  </div>
+</div>
+<script>
+const params = new URLSearchParams(window.location.search);
+const code = params.get('code');
+document.getElementById('fullUrl').value = window.location.href;
+if (code) {
+  document.getElementById('codeBox').hidden = false;
+  document.getElementById('codeOnly').value = code;
+} else {
+  document.getElementById('missing').hidden = false;
+}
+function copyField(id) {
+  const el = document.getElementById(id);
+  el.select();
+  navigator.clipboard.writeText(el.value).then(() => {
+    const flag = id === 'fullUrl' ? 'copiedFull' : 'copiedCode';
+    const node = document.getElementById(flag);
+    node.style.display = 'block';
+    setTimeout(() => node.style.display = 'none', 1500);
+  });
+}
+</script>
+</body>
+</html>
