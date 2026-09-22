@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mis Shorts — Google / YouTube</title>
+<style>
+:root{
+  --bg:#F6F5F1;
+  --surface:#FFFFFF;
+  --text:#1B1D1B;
+  --text-muted:#5C625C;
+  --accent:#0F6A5C;
+  --accent-soft:#E4F0ED;
+  --border:#E2E0D8;
+  --mono-chip:#EFEEE7;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15181A;
+    --surface:#1C2023;
+    --text:#ECEEEA;
+    --text-muted:#9BA39C;
+    --accent:#3FCBAF;
+    --accent-soft:#193430;
+    --border:#2B302C;
+    --mono-chip:#20242166;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15181A;
+  --surface:#1C2023;
+  --text:#ECEEEA;
+  --text-muted:#9BA39C;
+  --accent:#3FCBAF;
+  --accent-soft:#193430;
+  --border:#2B302C;
+  --mono-chip:#20242166;
+}
+
+*{box-sizing:border-box;}
+html{background:var(--bg);}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'IBM Plex Sans',-apple-system,BlinkMacSystemFont,sans-serif;
+  padding-inline:20px;
+  padding-block:56px;
+  line-height:1.65;
+  margin:0;
+}
+h1,h2,h3,.eyebrow{font-family:'Fraunces',Georgia,serif;text-wrap:balance;}
+
+.page{max-width:680px;margin-inline:auto;}
+
+.eyebrow{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.78rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--accent);
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  align-items:center;
+  margin-block-end:18px;
+}
+.eyebrow .dot{opacity:0.4;}
+
+h1{
+  font-size:clamp(2rem,5vw,2.6rem);
+  font-weight:600;
+  margin:0 0 6px;
+  letter-spacing:-0.01em;
+}
+.subtitle{
+  color:var(--text-muted);
+  font-size:1.02rem;
+  margin:0 0 34px;
+  max-width:52ch;
+}
+
+nav.toc{
+  display:flex;
+  gap:8px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  border-radius:10px;
+  padding:6px;
+  margin-bottom:48px;
+}
+nav.toc a{
+  flex:1;
+  text-align:center;
+  padding:10px 12px;
+  border-radius:7px;
+  color:var(--text-muted);
+  text-decoration:none;
+  font-size:0.92rem;
+  font-weight:500;
+  transition:background 0.15s ease, color 0.15s ease;
+}
+nav.toc a:hover{background:var(--accent-soft);color:var(--accent);}
+
+section{margin-bottom:56px;scroll-margin-top:24px;}
+section > .meta{
+  color:var(--text-muted);
+  font-size:0.85rem;
+  font-family:'IBM Plex Mono',monospace;
+  margin-bottom:6px;
+}
+h2{
+  font-size:1.55rem;
+  font-weight:600;
+  margin:0 0 22px;
+  padding-bottom:14px;
+  border-bottom:1px solid var(--border);
+}
+h3{
+  font-size:1.08rem;
+  font-weight:600;
+  margin:28px 0 10px;
+  font-family:'IBM Plex Sans',sans-serif;
+}
+p{margin:0 0 14px;max-width:64ch;}
+p.lead{font-size:1.05rem;color:var(--text);}
+ul{margin:0 0 14px;padding-left:1.2em;}
+li{margin-bottom:8px;max-width:60ch;}
+strong{font-weight:600;}
+
+.scope-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:18px 0 22px;
+  font-size:0.92rem;
+}
+.scope-table th{
+  text-align:left;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  padding:0 12px 10px 0;
+  border-bottom:1px solid var(--border);
+  font-weight:500;
+}
+.scope-table td{
+  padding:12px 12px 12px 0;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;
+}
+.scope-table tr:last-child td{border-bottom:none;}
+.scope-chip{
+  display:inline-block;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:0.8rem;
+  background:var(--mono-chip);
+  color:var(--accent);
+  padding:2px 8px;
+  border-radius:5px;
+  white-space:nowrap;
+}
+
+.callout{
+  background:var(--accent-soft);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px 18px;
+  margin:20px 0;
+  font-size:0.94rem;
+}
+.callout strong{color:var(--accent);}
+
+.contact{
+  border-top:1px solid var(--border);
+  padding-top:28px;
+  color:var(--text-muted);
+  font-size:0.92rem;
+}
+.contact a{color:var(--accent);}
+
+@media (max-width:480px){
+  nav.toc{flex-direction:column;}
+}
+</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+</head>
+<body>
+<div class="page">
+  <div class="eyebrow">
+    <span>HistoriasExpres</span><span class="dot">·</span>
+    <span>TriviaExpres</span><span class="dot">·</span>
+    <span>InglésExprés</span>
+  </div>
+  <h1>Mis Shorts</h1>
+  <p class="subtitle">Herramienta interna de un único desarrollador que genera y publica automáticamente vídeos cortos en tres canales de YouTube propios, y lee sus estadísticas de rendimiento.</p>
+
+  <nav class="toc">
+    <a href="#terminos">Términos de servicio</a>
+    <a href="#privacidad">Política de privacidad</a>
+  </nav>
+
+  <section id="terminos">
+    <div class="meta">Última actualización: 22 de septiembre de 2026</div>
+    <h2>Términos de servicio</h2>
+
+    <p class="lead">Mis Shorts es una herramienta de automatización de uso personal. No es un producto ni un servicio ofrecido al público: no existe registro de usuarios, panel de acceso público ni cuentas de terceros.</p>
+
+    <h3>Qué hace</h3>
+    <p>Cada día, un proceso automatizado genera vídeos cortos a partir de bancos de contenido propios (trivia de cultura general, relatos breves y lecciones de inglés) y los sube, mediante la YouTube Data API v3, a tres canales de YouTube controlados por el mismo desarrollador: Historias Exprés, Trivia Exprés e Inglés Exprés. También usa la YouTube Analytics API, en modo de solo lectura, para consultar las estadísticas de rendimiento de esos mismos vídeos.</p>
+
+    <h3>Quién puede usarlo</h3>
+    <p>Únicamente el desarrollador que registró la aplicación y autorizó, mediante OAuth, el acceso a sus propios canales de YouTube. La aplicación no ofrece inicio de sesión a otras personas ni actúa sobre canales que no sean los autorizados explícitamente.</p>
+
+    <h3>Contenido publicado</h3>
+    <p>Todo el contenido subido es propiedad del desarrollador o usa materiales con licencia adecuada para su uso (por ejemplo, vídeos e imágenes de stock con licencia, y voces sintetizadas). El desarrollador es responsable de que cada publicación cumpla las políticas de YouTube.</p>
+
+    <h3>Cambios y disponibilidad</h3>
+    <p>Al ser una herramienta interna, puede modificarse, pausarse o suspenderse en cualquier momento sin previo aviso, sin que ello afecte a terceros.</p>
+  </section>
+
+  <section id="privacidad">
+    <div class="meta">Última actualización: 22 de septiembre de 2026</div>
+    <h2>Política de privacidad</h2>
+
+    <p class="lead">Esta aplicación no recopila datos de espectadores de YouTube ni de ninguna cuenta de Google distinta de las tres autorizadas explícitamente por el desarrollador. No hay analítica de terceros, ni cookies, ni publicidad, ni venta o cesión de datos.</p>
+
+    <h3>Qué datos se tratan</h3>
+    <ul>
+      <li><strong>Tokens de acceso OAuth</strong> de las tres cuentas de YouTube autorizadas, necesarios para subir vídeos, gestionar listas de reproducción y consultar estadísticas en su nombre.</li>
+      <li><strong>Metadatos de los vídeos</strong> (título, descripción, etiquetas) generados por la propia herramienta antes de publicarse.</li>
+      <li><strong>Estadísticas de rendimiento agregadas</strong> de los vídeos publicados (vistas, retención, me gusta), obtenidas de la YouTube Analytics API. No se trata información personal de los espectadores, solo métricas agregadas del canal.</li>
+    </ul>
+
+    <h3>Permisos solicitados a Google</h3>
+    <table class="scope-table">
+      <tr><th>Scope</th><th>Para qué se usa</th></tr>
+      <tr>
+        <td><span class="scope-chip">youtube</span></td>
+        <td>Subir vídeos y gestionar listas de reproducción en los tres canales autorizados.</td>
+      </tr>
+      <tr>
+        <td><span class="scope-chip">yt-analytics.readonly</span></td>
+        <td>Consultar, en modo de solo lectura, las estadísticas de rendimiento de esos mismos vídeos.</td>
+      </tr>
+    </table>
+
+    <h3>Dónde se guardan los tokens</h3>
+    <p>Los tokens se almacenan como secretos cifrados en GitHub Actions, dentro de repositorios privados. Nunca se incluyen en el código fuente ni se comparten con terceros. Todas las llamadas a la API viajan por HTTPS directamente a los endpoints oficiales de Google.</p>
+
+    <div class="callout">
+      <strong>Revocar el acceso</strong> — el titular de cada cuenta puede retirar el permiso en cualquier momento desde <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">Cuenta de Google → Seguridad → Aplicaciones de terceros con acceso a la cuenta</a>. Al revocarlo, esta herramienta deja de poder publicar en ese canal de inmediato.
+    </div>
+
+    <h3>Conservación</h3>
+    <p>Los tokens se conservan únicamente mientras la integración sigue activa. Si se revoca el acceso o se elimina la aplicación, los tokens almacenados dejan de ser válidos y se eliminan de los secretos del repositorio.</p>
+  </section>
+
+  <div class="contact">
+    Preguntas sobre estos términos o esta política: <a href="mailto:cartaflowapp@gmail.com">cartaflowapp@gmail.com</a>
+  </div>
+</div>
+</body>
+</html>
